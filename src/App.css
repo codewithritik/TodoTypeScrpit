@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  background: rgb(63, 94, 251);
+  background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
 }
 
 .App-logo {
@@ -7,9 +12,66 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+.fade-in-down {
+  animation: fadeInDown 2s ease-out;
+  width: 70%;
+  margin: auto;
+  height: 50px;
+  margin-top: 50px;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  padding: 2px 10px;
+  padding-left: 20px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(15.5px);
+  -webkit-backdrop-filter: blur(15.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.fade-in-down input {
+  width: calc(100% - 50px);
+  height: 40px;
+  margin-left: 0px;
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  color: white;
+}
+
+.fade-in-down input:focus-visible {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.course-pointer {
+  cursor: pointer
+}
+
+::placeholder {
+  color: lightgray;
+  opacity: 0.7;
+}
+
+::-ms-input-placeholder {
+  color: lightgray;
+  opacity: 0.7;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -28,11 +90,47 @@
   color: #61dafb;
 }
 
+.width-80 {
+  width: 80%;
+}
+
+.mr-auto {
+  margin: auto
+}
+
+.mr-top-5 {
+  margin-top: 5%;
+}
+
+.width-50 {
+  width: 50%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.bg-white{
+  background-color: white;
+}
+
+.min-height-500{
+  min-height: 500px;
+}
+
+.main-cont{
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
