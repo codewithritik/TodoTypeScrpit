@@ -9,10 +9,12 @@ type todoLists = {
 
 interface myProps {
     todoLists: todoLists[];
-    setTodoLists: React.Dispatch<React.SetStateAction<todoLists[]>>
+    setTodoLists: React.Dispatch<React.SetStateAction<todoLists[]>>;
+    isFetchAgain: boolean;
+    setIsFetch: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const SearchBox: React.FC<myProps> = ({ todoLists, setTodoLists }: myProps) => {
+const SearchBox: React.FC<myProps> = ({ isFetchAgain, setIsFetch }: myProps) => {
     const [todoStr, setTodoStr] = useState<string>("");
 
     const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -22,19 +24,19 @@ const SearchBox: React.FC<myProps> = ({ todoLists, setTodoLists }: myProps) => {
     }
 
     const onHandleAdd = () => {
-        const existingEntries = localStorage.getItem("todoLists") && JSON.parse(localStorage.getItem("todoLists") || "") || [];
+        const existingEntries: todoLists[] = localStorage.getItem("todoLists") && JSON.parse(localStorage.getItem("todoLists") || "") || [];
+
         const newObj: todoLists = {
-            id: existingEntries?.length || 1,
+            id: Date.now(),
             content: todoStr,
             completed: false
         }
-        const newXyz = [...todoLists, newObj]
-        setTodoLists(newXyz);
-        localStorage.setItem("todoLists", JSON.stringify([...todoLists, newObj]));
+        localStorage.setItem("todoLists", JSON.stringify([...existingEntries, newObj]));
+        setTodoStr("")
+        setIsFetch(!isFetchAgain)
     }
 
     const handleKeyboardEvent = (e: KeyboardEvent<HTMLImageElement>) => {
-        // Do something
         if (e.code === "Enter") {
             onHandleAdd();
         }
